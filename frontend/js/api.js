@@ -3,7 +3,7 @@
  * Reads the base URL from config.js (window.__CONFIG__.API_BASE)
  */
 
-const _BASE = (window.__CONFIG__ && window.__CONFIG__.API_BASE) || 'https://mydocuments.railway.internal';
+const _BASE = (window.__CONFIG__ && window.__CONFIG__.API_BASE) || 'https://mydocuments-production.up.railway.app';
 const API_BASE = _BASE.replace(/\/$/, '') + '/api';
 
 async function apiFetch(path, options = {}) {
