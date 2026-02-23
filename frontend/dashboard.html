@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Documents — Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div style="min-width:160px"></div>
+        <div class="header-center">
+            <div class="header-badge">Personal Portfolio</div>
+            <h1>My <em>Documents</em></h1>
+            <p class="subtitle">A curated collection of achievements &amp; credentials</p>
+            <div class="divider"><span>✦</span></div>
+        </div>
+        <div class="user-info">
+            <span class="user-name" id="userNameDisplay"></span>
+            <button class="btn-logout" onclick="logout()">Sign Out</button>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-num" id="totalCount">0</div>
+            <div class="stat-label">Documents</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" id="issuerCount">0</div>
+            <div class="stat-label">Issuers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" id="yearCount">0</div>
+            <div class="stat-label">Years Active</div>
+        </div>
+    </div>
+
+    <!-- Upload Zone -->
+    <div class="upload-section">
+        <div class="upload-zone" id="uploadZone">
+            <div class="upload-icon">⊕</div>
+            <div class="upload-title">Upload Certificate</div>
+            <div class="upload-sub">Drag &amp; drop or click to browse your files</div>
+            <div class="upload-formats">
+                <span class="format-tag">PDF</span>
+                <span class="format-tag">PNG</span>
+                <span class="format-tag">JPG</span>
+                <span class="format-tag">WEBP</span>
+            </div>
+            <input type="file" id="fileInput" multiple accept=".pdf,.png,.jpg,.jpeg,.webp">
+        </div>
+    </div>
+
+    <!-- Document Grid -->
+    <div class="grid-section">
+        <div class="section-header">
+            <div class="section-title">All Documents</div>
+            <div class="filters" id="filterContainer">
+                <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+            </div>
+        </div>
+        <div class="cert-grid" id="certGrid">
+            <!-- Skeleton loaders -->
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton skeleton-line"></div>
+                    <div class="skeleton skeleton-line short"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton skeleton-line"></div>
+                    <div class="skeleton skeleton-line short"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── View Modal ── -->
+    <div class="modal-overlay" id="viewModal" style="display:none" onclick="if(event.target===this) closeViewModal()">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Document</div>
+                <button class="modal-close" onclick="closeViewModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="spinner"></div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-meta">
+                    <span class="modal-issuer" id="modalIssuer"></span>
+                    <span class="modal-date" id="modalDate"></span>
+                </div>
+                <a class="btn-gold" id="modalDownload" download>↓ Download</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Edit Modal ── -->
+    <div class="modal-overlay" id="editModal" style="display:none" onclick="if(event.target===this) closeEditModal()">
+        <div class="modal edit-modal">
+            <div class="modal-header">
+                <div class="modal-title">Edit Document</div>
+                <button class="modal-close" onclick="closeEditModal()">✕</button>
+            </div>
+            <div class="modal-body form-body">
+                <div class="form-group">
+                    <label class="form-label">Certificate / Document Name</label>
+                    <input type="text" class="form-input" id="editName" placeholder="e.g. Python for Beginners">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Issuing Organization</label>
+                    <input type="text" class="form-input" id="editIssuer" placeholder="e.g. Simplilearn">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Date Issued</label>
+                    <input type="text" class="form-input" id="editDate" placeholder="e.g. April 2025">
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content:flex-end">
+                <button class="btn-gold" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload progress bar -->
+    <div class="upload-progress" id="uploadProgress"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

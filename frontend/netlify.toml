@@ -1,0 +1,12 @@
+# Netlify configuration for the frontend
+# Deploy only the /frontend folder
+
+[build]
+  base    = "frontend"
+  publish = "."
+
+# Redirect all routes to index.html for SPA-style navigation
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

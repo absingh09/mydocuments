@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Documents — Sign In</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+
+      <!-- Logo / Branding -->
+      <div class="auth-logo">
+        <div class="badge">Personal Portfolio</div>
+        <h1>My <em>Documents</em></h1>
+        <p>Your certificates &amp; credentials, securely stored</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Sign Up</button>
+      </div>
+
+      <div class="auth-form-wrap">
+
+        <!-- Error banner -->
+        <div class="auth-error" id="authError"></div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" required
+              autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required
+              autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn-primary" id="loginBtn">Sign In</button>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="registerForm" style="display:none">
+          <div class="form-group">
+            <label class="form-label" for="regName">Full Name</label>
+            <input type="text" id="regName" class="form-input" placeholder="Your full name" required autocomplete="name"
+              minlength="2">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" class="form-input" placeholder="you@example.com" required
+              autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Password</label>
+            <input type="password" id="regPassword" class="form-input" placeholder="Min. 6 characters" required
+              minlength="6" autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regConfirm">Confirm Password</label>
+            <input type="password" id="regConfirm" class="form-input" placeholder="Repeat your password" required
+              autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn-primary" id="registerBtn">Create Account</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>
